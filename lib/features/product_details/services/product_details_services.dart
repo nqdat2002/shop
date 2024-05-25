@@ -19,7 +19,7 @@ class ProductDetailsServices {
 
     try {
       http.Response res = await http.post(
-        Uri.parse('$uri/api/add-to-cart'),
+        Uri.parse('$uri/api/user/add-to-cart'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': userProvider.user.token,
