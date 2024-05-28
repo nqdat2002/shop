@@ -53,6 +53,7 @@ class HomeServices {
       description: '',
       quantity: 0,
       images: [],
+      urlModel: '',
       category: '',
       price: 0,
     );

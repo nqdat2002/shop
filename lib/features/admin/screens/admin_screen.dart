@@ -5,6 +5,7 @@ import 'package:shop/features/admin/screens/posts_screen.dart';
 import 'package:flutter/material.dart';
 
 class AdminScreen extends StatefulWidget {
+  static const String routeName = '/admin-home';
   const AdminScreen({Key? key}) : super(key: key);
 
   @override

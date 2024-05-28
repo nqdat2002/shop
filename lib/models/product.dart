@@ -7,6 +7,7 @@ class Product {
   final String description;
   final double quantity;
   final List<String> images;
+  final String urlModel;
   final String category;
   final double price;
   final String? id;
@@ -16,6 +17,7 @@ class Product {
     required this.description,
     required this.quantity,
     required this.images,
+    required this.urlModel,
     required this.category,
     required this.price,
     this.id,
@@ -28,6 +30,7 @@ class Product {
       'description': description,
       'quantity': quantity,
       'images': images,
+      'urlModel': urlModel,
       'category': category,
       'price': price,
       'id': id,
@@ -41,6 +44,7 @@ class Product {
       description: map['description'] ?? '',
       quantity: map['quantity']?.toDouble() ?? 0.0,
       images: List<String>.from(map['images']),
+      urlModel: map['urlModel'] ?? '',
       category: map['category'] ?? '',
       price: map['price']?.toDouble() ?? 0.0,
       id: map['_id'],

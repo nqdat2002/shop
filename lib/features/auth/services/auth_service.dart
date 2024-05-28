@@ -4,6 +4,7 @@ import 'package:shop/common/widgets/bottom_bar.dart';
 import 'package:shop/constants/error_handling.dart';
 import 'package:shop/constants/global_variables.dart';
 import 'package:shop/constants/utils.dart';
+import 'package:shop/features/admin/screens/admin_screen.dart';
 import 'package:shop/models/user.dart';
 import 'package:shop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
@@ -78,9 +79,10 @@ class AuthService {
           SharedPreferences prefs = await SharedPreferences.getInstance();
           Provider.of<UserProvider>(context, listen: false).setUser(res.body);
           await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
+
           Navigator.pushNamedAndRemoveUntil(
             context,
-            BottomBar.routeName,
+            Provider.of<UserProvider>(context).user.type == 'user' ? BottomBar.routeName : AdminScreen.routeName,
             (route) => false,
           );
         },

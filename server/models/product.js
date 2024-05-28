@@ -18,6 +18,10 @@ export const productSchema = mongoose.Schema({
       required: true,
     },
   ],
+  urlModel: {
+    type: String,
+    require: true,
+  },
   quantity: {
     type: Number,
     required: true,

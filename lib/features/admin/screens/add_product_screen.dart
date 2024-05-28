@@ -22,6 +22,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
   final TextEditingController quantityController = TextEditingController();
+  final TextEditingController urlModelController = TextEditingController();
   final AdminServices adminServices = AdminServices();
 
   String category = 'Mobiles';
@@ -55,6 +56,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
         quantity: double.parse(quantityController.text),
         category: category,
         images: images,
+        urlModel: urlModelController.text,
       );
     }
   }
@@ -159,6 +161,11 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 CustomTextField(
                   controller: priceController,
                   hintText: 'Price',
+                ),
+                const SizedBox(height: 10),
+                CustomTextField(
+                  controller: urlModelController,
+                  hintText: 'Link to UrlModel',
                 ),
                 const SizedBox(height: 10),
                 CustomTextField(

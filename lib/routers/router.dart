@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:shop/common/widgets/bottom_bar.dart';
 import 'package:shop/features/address/screens/address_screen.dart';
 import 'package:shop/features/admin/screens/add_product_screen.dart';
+import 'package:shop/features/admin/screens/admin_screen.dart';
 import 'package:shop/features/auth/screens/auth_screen.dart';
 import 'package:shop/features/home/screens/category_deals_screen.dart';
 import 'package:shop/features/home/screens/home_screen.dart';
@@ -9,7 +11,6 @@ import 'package:shop/features/product_details/screens/product_details_screen.dar
 import 'package:shop/features/search/screens/search_screen.dart';
 import 'package:shop/models/order.dart';
 import 'package:shop/models/product.dart';
-import 'package:flutter/material.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
@@ -19,6 +20,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         builder: (_) => const AuthScreen(),
       );
 
+    case AdminScreen.routeName:
+      return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (_) => const AdminScreen()
+      );
     case HomeScreen.routeName:
       return MaterialPageRoute(
         settings: routeSettings,

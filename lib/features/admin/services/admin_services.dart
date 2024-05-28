@@ -21,6 +21,7 @@ class AdminServices {
     required double quantity,
     required String category,
     required List<File> images,
+    required String urlModel,
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
@@ -40,6 +41,7 @@ class AdminServices {
         description: description,
         quantity: quantity,
         images: imageUrls,
+        urlModel: urlModel,
         category: category,
         price: price,
       );
