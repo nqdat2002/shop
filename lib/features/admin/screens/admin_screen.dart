@@ -1,8 +1,10 @@
 import 'package:shop/constants/global_variables.dart';
+import 'package:shop/features/account/widgets/account_button.dart';
 import 'package:shop/features/admin/screens/analtyics_screen.dart';
 import 'package:shop/features/admin/screens/orders_screen.dart';
 import 'package:shop/features/admin/screens/posts_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shop/features/account/services/account_services.dart';
 
 class AdminScreen extends StatefulWidget {
   static const String routeName = '/admin-home';
@@ -52,13 +54,17 @@ class _AdminScreenState extends State<AdminScreen> {
                   color: Colors.black,
                 ),
               ),
-              const Text(
-                'Admin',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: () => AccountServices().logOut(context),
+                child: const Text(
+                  'Admin',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              )
+              ),
+
             ],
           ),
         ),

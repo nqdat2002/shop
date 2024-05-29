@@ -38,13 +38,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
     quantityController.dispose();
   }
 
-  List<String> productCategories = [
-    'Mobiles',
-    'Essentials',
-    'Appliances',
-    'Books',
-    'Fashion'
-  ];
+  List<String> productCategories = GlobalVariables.productCategories;
 
   void sellProduct() {
     if (_addProductFormKey.currentState!.validate() && images.isNotEmpty) {
@@ -195,6 +189,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 CustomButton(
                   text: 'Sell',
                   onTap: sellProduct,
+                  initialColor: GlobalVariables.secondaryColor,
+                  pressedColor: GlobalVariables.pressedColor,
                 ),
               ],
             ),

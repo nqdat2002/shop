@@ -227,6 +227,8 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                   controlsBuilder: (context, details) {
                     if (user.type == 'admin') {
                       return CustomButton(
+                        initialColor: GlobalVariables.secondaryColor,
+                        pressedColor: GlobalVariables.pressedColor,
                         text: 'Done',
                         onTap: () => changeOrderStatus(details.currentStep),
                       );

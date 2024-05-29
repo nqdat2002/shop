@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:shop/common/widgets/custom_button.dart';
 import 'package:shop/common/widgets/custom_textfield.dart';
 import 'package:shop/constants/global_variables.dart';
 import 'package:shop/features/auth/services/auth_service.dart';
-import 'package:flutter/material.dart';
 
 enum Auth {
   signin,
@@ -11,6 +11,7 @@ enum Auth {
 
 class AuthScreen extends StatefulWidget {
   static const String routeName = '/auth-screen';
+
   const AuthScreen({Key? key}) : super(key: key);
 
   @override
@@ -25,6 +26,7 @@ class _AuthScreenState extends State<AuthScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
+  bool isPasswordVisible = false;
 
   @override
   void dispose() {
@@ -41,6 +43,7 @@ class _AuthScreenState extends State<AuthScreen> {
       password: _passwordController.text,
       name: _nameController.text,
     );
+    isPasswordVisible = false;
   }
 
   void signInUser() {
@@ -49,6 +52,7 @@ class _AuthScreenState extends State<AuthScreen> {
       email: _emailController.text,
       password: _passwordController.text,
     );
+    isPasswordVisible = false;
   }
 
   @override
@@ -108,11 +112,25 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                         const SizedBox(height: 10),
                         CustomTextField(
-                          controller: _passwordController,
-                          hintText: 'Password',
-                        ),
+                            controller: _passwordController,
+                            hintText: 'Password',
+                            obscureText: !isPasswordVisible,
+                            suffix: IconButton(
+                              icon: Icon(
+                                  isPasswordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Colors.grey),
+                              onPressed: () {
+                                setState(() {
+                                  isPasswordVisible = !isPasswordVisible;
+                                });
+                              },
+                            )),
                         const SizedBox(height: 10),
                         CustomButton(
+                          initialColor: GlobalVariables.secondaryColor,
+                          pressedColor: GlobalVariables.pressedColor,
                           text: 'Sign Up',
                           onTap: () {
                             if (_signUpFormKey.currentState!.validate()) {
@@ -159,12 +177,26 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                         const SizedBox(height: 10),
                         CustomTextField(
-                          controller: _passwordController,
-                          hintText: 'Password',
-                        ),
+                            controller: _passwordController,
+                            hintText: 'Password',
+                            obscureText: !isPasswordVisible,
+                            suffix: IconButton(
+                              icon: Icon(
+                                  isPasswordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Colors.grey),
+                              onPressed: () {
+                                setState(() {
+                                  isPasswordVisible = !isPasswordVisible;
+                                });
+                              },
+                            )),
                         const SizedBox(height: 10),
                         CustomButton(
                           text: 'Sign In',
+                          initialColor: GlobalVariables.secondaryColor,
+                          pressedColor: GlobalVariables.pressedColor,
                           onTap: () {
                             if (_signInFormKey.currentState!.validate()) {
                               signInUser();

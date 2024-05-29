@@ -13,10 +13,14 @@ class GlobalVariables {
   );
 
   static const secondaryColor = Color.fromRGBO(255, 153, 0, 1);
+  static const pressedColor = Color.fromRGBO(255, 153, 0, 0.4);
   static const backgroundColor = Colors.white;
   static const Color greyBackgroundColor = Color(0xffebecee);
   static var selectedNavBarColor = Colors.cyan[800]!;
   static const unselectedNavBarColor = Colors.black87;
+
+  static const _cloudName = 'dsg8jgnhy';
+  static const _uploadPreset = '';
 
   // STATIC IMAGES
   static const List<String> carouselImages = [
@@ -27,26 +31,39 @@ class GlobalVariables {
     'https://images-na.ssl-images-amazon.com/images/G/31/img21/shoes/September/SSW/pc-header._CB641971330_.jpg',
   ];
 
+  static const   List<String> productCategories = [
+    'Tables',
+    'Chairs',
+    'Couches',
+    'Desks',
+    'Stools',
+    'Dressers'
+  ];
+
   static const List<Map<String, String>> categoryImages = [
     {
-      'title': 'Mobiles',
-      'image': 'assets/images/mobiles.jpeg',
+      'title': 'Tables',
+      'image': 'assets/images/table.png',
     },
     {
-      'title': 'Essentials',
-      'image': 'assets/images/essentials.jpeg',
+      'title': 'Chairs',
+      'image': 'assets/images/chair.png',
     },
     {
-      'title': 'Appliances',
-      'image': 'assets/images/appliances.jpeg',
+      'title': 'Couches',
+      'image': 'assets/images/couch.png',
     },
     {
-      'title': 'Books',
-      'image': 'assets/images/books.jpeg',
+      'title': 'Desks',
+      'image': 'assets/images/desk.png',
     },
     {
-      'title': 'Fashion',
-      'image': 'assets/images/fashion.jpeg',
+      'title': 'Stools',
+      'image': 'assets/images/stool.png',
+    },
+    {
+      'title': 'Dressers',
+      'image': 'assets/images/dresser.png',
     },
   ];
 }
