@@ -3,11 +3,12 @@ import Order from "../models/order.js";
 
 export const addProduct = async (req, res, next) => {
   try {
-    const { name, description, images, quantity, price, category } = req.body;
+    const { name, description, images, urlModel, quantity, price, category } = req.body;
     let product = new Product({
       name,
       description,
       images,
+      urlModel,
       quantity,
       price,
       category,
