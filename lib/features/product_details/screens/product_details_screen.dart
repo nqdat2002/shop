@@ -169,6 +169,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       i,
                       fit: BoxFit.contain,
                       height: 200,
+                      width: 200,
                     ),
                   );
                 },
