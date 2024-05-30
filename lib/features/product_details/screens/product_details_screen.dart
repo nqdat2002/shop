@@ -140,9 +140,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    widget.product.id!,
-                  ),
+                  // Text(
+                  //   widget.product.id!,
+                  // ),
                   Stars(
                     rating: avgRating,
                   ),
@@ -157,7 +157,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               child: Text(
                 widget.product.name,
                 style: const TextStyle(
-                  fontSize: 15,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),

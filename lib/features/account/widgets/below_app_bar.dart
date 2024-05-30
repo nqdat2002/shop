@@ -13,7 +13,7 @@ class BelowAppBar extends StatelessWidget {
       decoration: const BoxDecoration(
         gradient: GlobalVariables.appBarGradient,
       ),
-      padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+      padding: const EdgeInsets.all(10),
       child: Row(
         children: [
           RichText(

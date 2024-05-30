@@ -34,7 +34,7 @@ class GlobalVariables {
   static const   List<String> productCategories = [
     'Table',
     'Chair',
-    'Couche',
+    'Couch',
     'Desk',
     'Stool',
     'Dresser'
@@ -50,7 +50,7 @@ class GlobalVariables {
       'image': 'assets/images/chair.png',
     },
     {
-      'title': 'Couche',
+      'title': 'Couch',
       'image': 'assets/images/couch.png',
     },
     {

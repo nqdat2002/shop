@@ -13,7 +13,7 @@ const adminRouter = express.Router();
 
 adminRouter.post("/add-product", admin, addProduct);
 adminRouter.get("/get-all-products", admin, getAllProducts);
-adminRouter.post("delete-product", admin, deleteProduct);
+adminRouter.post("/delete-product", admin, deleteProduct);
 adminRouter.get("/get-all-orders", admin, getAllOrders);
 adminRouter.post("/change-order-status", admin, changeOrderStatus);
 adminRouter.get("/analytics", admin, analyst);
