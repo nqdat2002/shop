@@ -25,7 +25,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   final TextEditingController urlModelController = TextEditingController();
   final AdminServices adminServices = AdminServices();
 
-  String category = 'Mobiles';
+  String category = 'Table';
   List<File> images = [];
   final _addProductFormKey = GlobalKey<FormState>();
 

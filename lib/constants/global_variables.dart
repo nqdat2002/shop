@@ -19,8 +19,8 @@ class GlobalVariables {
   static var selectedNavBarColor = Colors.cyan[800]!;
   static const unselectedNavBarColor = Colors.black87;
 
-  static const _cloudName = 'dsg8jgnhy';
-  static const _uploadPreset = '';
+  static String cloudName = 'dsg8jgnhy';
+  static String uploadPreset = 's5ubup6v';
 
   // STATIC IMAGES
   static const List<String> carouselImages = [
@@ -32,37 +32,37 @@ class GlobalVariables {
   ];
 
   static const   List<String> productCategories = [
-    'Tables',
-    'Chairs',
-    'Couches',
-    'Desks',
-    'Stools',
-    'Dressers'
+    'Table',
+    'Chair',
+    'Couche',
+    'Desk',
+    'Stool',
+    'Dresser'
   ];
 
   static const List<Map<String, String>> categoryImages = [
     {
-      'title': 'Tables',
+      'title': 'Table',
       'image': 'assets/images/table.png',
     },
     {
-      'title': 'Chairs',
+      'title': 'Chair',
       'image': 'assets/images/chair.png',
     },
     {
-      'title': 'Couches',
+      'title': 'Couche',
       'image': 'assets/images/couch.png',
     },
     {
-      'title': 'Desks',
+      'title': 'Desk',
       'image': 'assets/images/desk.png',
     },
     {
-      'title': 'Stools',
+      'title': 'Stool',
       'image': 'assets/images/stool.png',
     },
     {
-      'title': 'Dressers',
+      'title': 'Dresser',
       'image': 'assets/images/dresser.png',
     },
   ];

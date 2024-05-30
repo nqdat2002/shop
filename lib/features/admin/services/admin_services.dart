@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
+
 class AdminServices {
   void sellProduct({
     required BuildContext context,
@@ -26,7 +27,9 @@ class AdminServices {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
-      final cloudinary = CloudinaryPublic('denfgaxvg', 'uszbstnu');
+      String cloudName = GlobalVariables.cloudName;
+      String uploadPreset = GlobalVariables.uploadPreset;
+      final cloudinary = CloudinaryPublic(cloudName, uploadPreset);
       List<String> imageUrls = [];
 
       for (int i = 0; i < images.length; i++) {
