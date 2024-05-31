@@ -55,6 +55,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       context: context,
       product: widget.product,
     );
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Added to Cart Successfully!'),
+        duration: Duration(seconds: 2),
+      ),
+    );
   }
 
   void tryInYourHome() {

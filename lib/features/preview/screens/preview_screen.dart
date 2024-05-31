@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop/models/product.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
+import 'package:shop/models/product.dart';
+
 class PreviewScreen extends StatefulWidget {
   static const String routeName = '/preview';
 
@@ -15,9 +16,7 @@ class PreviewScreen extends StatefulWidget {
   State<PreviewScreen> createState() => _PreviewScreenState();
 }
 
-
 class _PreviewScreenState extends State<PreviewScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -30,14 +29,14 @@ class _PreviewScreenState extends State<PreviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return
-      Scaffold(
-        body: Center(
-          child: ModelViewer(
-            src: widget.product.urlModel.toString(),
-            ar: true,
-          ),
-        ),
-      );
+    return Scaffold(
+      body: ModelViewer(
+        src: widget.product.urlModel.toString(),
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.transparent,
+      ),
+    );
   }
 }
