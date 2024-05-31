@@ -35,22 +35,35 @@ class _UsersScreenState extends State<UsersScreen> {
     return users == null
         ? const Loader()
         : Scaffold(
+            appBar: AppBar(
+              title: const Text('User Accounts List'),
+              centerTitle: true,
+            ),
             body: ListView.builder(
-            itemCount: users!.length,
-            itemBuilder: (context, index) {
-              final user = users![index];
-              return ListTile(
-                title: Text(user.name),
-                subtitle: Text(user.email),
-                leading: const Icon(Icons.person),
-                trailing: user.type != 'admin' ? const Icon(Icons.arrow_forward) : const Text("Admin", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-
-                onTap: () {
-                  // Handle tap if needed
-                },
-              );
-            },
-          )
-    );
+              itemCount: users!.length,
+              itemBuilder: (context, index) {
+                final user = users![index];
+                return ListTile(
+                  title: Text(user.name),
+                  subtitle: Text(user.email),
+                  leading: const Icon(Icons.person),
+                  trailing: user.type != 'admin'
+                      ? const Text(
+                          "User",
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        )
+                      : const Text(
+                          "Admin",
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                  onTap: () {
+                    // Handle tap if needed
+                  },
+                );
+              },
+            ),
+          );
   }
 }

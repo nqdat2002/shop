@@ -54,7 +54,7 @@ class AddressServices {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
-      http.Response res = await http.post(Uri.parse('$uri/api/order'),
+      http.Response res = await http.post(Uri.parse('$uri/api/user/order'),
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
             'x-auth-token': userProvider.user.token,
@@ -69,7 +69,7 @@ class AddressServices {
         response: res,
         context: context,
         onSuccess: () {
-          showSnackBar(context, 'Your order has been placed!');
+          showSnackBar(context, 'Your order has been placed! Please check mail to confirm order');
           User user = userProvider.user.copyWith(
             cart: [],
           );

@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:shop/common/widgets/custom_textfield.dart';
 import 'package:shop/constants/global_variables.dart';
 import 'package:shop/providers/user_provider.dart';
+import 'package:shop/common/widgets/custom_button.dart';
 
 class AddressScreen extends StatefulWidget {
   static const String routeName = '/address';
@@ -103,6 +104,18 @@ class _AddressScreenState extends State<AddressScreen> {
     } else {
       showSnackBar(context, 'ERROR');
     }
+    if (Provider.of<UserProvider>(context, listen: false)
+        .user
+        .address
+        .isEmpty) {
+      addressServices.saveUserAddress(
+          context: context, address: addressToBeUsed);
+    }
+    addressServices.placeOrder(
+      context: context,
+      address: addressToBeUsed,
+      totalSum: double.parse(widget.totalAmount),
+    );
   }
 
   @override
@@ -182,32 +195,38 @@ class _AddressScreenState extends State<AddressScreen> {
                   ],
                 ),
               ),
-              ApplePayButton(
-                width: double.infinity,
-                style: ApplePayButtonStyle.black,
-                type: ApplePayButtonType.buy,
-                paymentConfiguration: PaymentConfiguration.fromJsonString(GlobalVariables.dfaultA),
-                onPaymentResult: onApplePayResult,
-                paymentItems: paymentItems,
-                margin: const EdgeInsets.only(top: 15),
-                height: 50,
-                onPressed: () => payPressed(address),
+              CustomButton(
+                text: 'Payment',
+                onTap: () => payPressed(address),
+                initialColor: GlobalVariables.secondaryColor,
+                pressedColor: GlobalVariables.pressedColor,
               ),
-              const SizedBox(height: 10),
-
-              GooglePayButton(
-                onPressed: () => payPressed(address),
-                paymentConfiguration: PaymentConfiguration.fromJsonString(GlobalVariables.dfaultG),
-                onPaymentResult: onGooglePayResult,
-                paymentItems: paymentItems,
-                height: 50,
-                // theme: GooglePayButtonTheme.dark
-                type: GooglePayButtonType.buy,
-                margin: const EdgeInsets.only(top: 15),
-                loadingIndicator: const Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
+              // ApplePayButton(
+              //   width: double.infinity,
+              //   style: ApplePayButtonStyle.black,
+              //   type: ApplePayButtonType.buy,
+              //   paymentConfiguration: PaymentConfiguration.fromJsonString(GlobalVariables.dfaultA),
+              //   onPaymentResult: onApplePayResult,
+              //   paymentItems: paymentItems,
+              //   margin: const EdgeInsets.only(top: 15),
+              //   height: 50,
+              //   onPressed: () => payPressed(address),
+              // ),
+              // const SizedBox(height: 10),
+              //
+              // GooglePayButton(
+              //   onPressed: () => payPressed(address),
+              //   paymentConfiguration: PaymentConfiguration.fromJsonString(GlobalVariables.dfaultG),
+              //   onPaymentResult: onGooglePayResult,
+              //   paymentItems: paymentItems,
+              //   height: 50,
+              //   // theme: GooglePayButtonTheme.dark
+              //   type: GooglePayButtonType.buy,
+              //   margin: const EdgeInsets.only(top: 15),
+              //   loadingIndicator: const Center(
+              //     child: CircularProgressIndicator(),
+              //   ),
+              // ),
             ],
           ),
         ),

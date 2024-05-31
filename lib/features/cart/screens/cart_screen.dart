@@ -110,38 +110,42 @@ class _CartScreenState extends State<CartScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const AddressBox(),
-            const CartSubtotal(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CustomButton(
-                text: 'Proceed to Buy (${user.cart.length} items)',
-                onTap: () => navigateToAddress(sum),
-                initialColor: const Color.fromRGBO(254, 216, 19, 1),
-                pressedColor: const Color.fromRGBO(254, 216, 19, 0.5),
-
-              ),
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              children: [
+                const AddressBox(),
+                const CartSubtotal(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomButton(
+                    text: 'Proceed to Buy (${user.cart.length} items)',
+                    onTap: () => navigateToAddress(sum),
+                    initialColor: const Color.fromRGBO(254, 216, 19, 1),
+                    pressedColor: const Color.fromRGBO(254, 216, 19, 0.5),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                Container(
+                  color: Colors.black12.withOpacity(0.08),
+                  height: 1,
+                ),
+                const SizedBox(height: 5),
+              ],
             ),
-            const SizedBox(height: 15),
-            Container(
-              color: Colors.black12.withOpacity(0.08),
-              height: 1,
-            ),
-            const SizedBox(height: 5),
-            ListView.builder(
-              itemCount: user.cart.length,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+                  (context, index) {
                 return CartProduct(
                   index: index,
                 );
               },
+              childCount: user.cart.length,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

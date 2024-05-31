@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:shop/common/widgets/loader.dart';
 import 'package:shop/features/account/widgets/single_product.dart';
 import 'package:shop/features/admin/screens/add_product_screen.dart';
 import 'package:shop/features/admin/services/admin_services.dart';
 import 'package:shop/models/product.dart';
-import 'package:flutter/material.dart';
 
 class PostsScreen extends StatefulWidget {
   const PostsScreen({Key? key}) : super(key: key);
@@ -65,10 +65,17 @@ class _PostsScreenState extends State<PostsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Expanded(
-                          child: Text(
-                            productData.name,
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 18.0),
+                            child: Text(
+                              productData.name,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
                           ),
                         ),
                         IconButton(

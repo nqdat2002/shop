@@ -87,6 +87,7 @@ export const orderProducts = async (req, res, next) => {
     }
 
     let user = await User.findById(req.user);
+    let toEmail = user.email;
     user.cart = [];
     user = await user.save();
 
@@ -98,7 +99,23 @@ export const orderProducts = async (req, res, next) => {
       orderedAt: new Date().getTime(),
     });
     order = await order.save();
-    res.json(order);
+
+    const confirmationLink = `https://shop-s67f.onrender.com/api/user/confirm-order?orderId=${order._id}`;
+
+    const mailOptions = {
+      from: "ngquocdat.work@gmail.com",
+      to: toEmail,
+      subject: "Confirm Order",
+      html: `Click <a href="${confirmationLink}"> to confirm</a>.`,
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        return res.status(500).send(error.toString());
+      }
+      return res
+        .status(200)
+        .send({ message: "Email sent: " + info.response, order: order });
+    });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
@@ -108,6 +125,18 @@ export const viewOrders = async (req, res, next) => {
   try {
     const orders = await Order.find({ userId: req.user });
     res.json(orders);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+};
+
+export const confirmOrder = async (req, res, next) => {
+  try {
+    const orderId = req.query.orderId;
+
+    await Order.findOneAndUpdate({ orderId }, { status: 1 });
+
+    res.status(200).json({message: "success"});
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
