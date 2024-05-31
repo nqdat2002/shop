@@ -6,6 +6,7 @@ import 'package:shop/constants/utils.dart';
 import 'package:shop/features/admin/models/sales.dart';
 import 'package:shop/models/order.dart';
 import 'package:shop/models/product.dart';
+import 'package:shop/models/user.dart';
 import 'package:shop/providers/user_provider.dart';
 import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
@@ -134,6 +135,37 @@ class AdminServices {
     }
   }
 
+  Future<List<User> > fetchAllUsers(BuildContext context) async{
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    List<User> userList = [];
+    try {
+      http.Response res =
+      await http.get(Uri.parse('$uri/api/admin/get-all-users'), headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'x-auth-token': userProvider.user.token,
+      });
+
+      httpErrorHandle(
+        response: res,
+        context: context,
+        onSuccess: () {
+          for (int i = 0; i < jsonDecode(res.body).length; i++) {
+            userList.add(
+              User.fromJson(
+                jsonEncode(
+                  jsonDecode(res.body)[i],
+                ),
+              ),
+            );
+          }
+        },
+      );
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+    return userList;
+  }
+
   Future<List<Order>> fetchAllOrders(BuildContext context) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     List<Order> orderList = [];
@@ -214,11 +246,13 @@ class AdminServices {
           var response = jsonDecode(res.body);
           totalEarning = response['totalEarnings'];
           sales = [
-            Sales('Mobiles', response['mobileEarnings']),
-            Sales('Essentials', response['essentialEarnings']),
-            Sales('Books', response['booksEarnings']),
-            Sales('Appliances', response['applianceEarnings']),
-            Sales('Fashion', response['fashionEarnings']),
+            Sales('Table', response['tableEarnings']),
+            Sales('Chair', response['chairEarnings']),
+            Sales('Couch', response['couchEarnings']),
+            Sales('Desk', response['deskEarnings']),
+            Sales('Stool', response['stoolEarnings']),
+            Sales('Dresser', response['dresserEarnings']),
+
           ];
         },
       );

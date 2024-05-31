@@ -34,8 +34,9 @@ class ProductDetailsServices {
         context: context,
         onSuccess: () {
           User user =
-              userProvider.user.copyWith(cart: jsonDecode(res.body)['cart']);
+          userProvider.user.copyWith(cart: jsonDecode(res.body)['cart']);
           userProvider.setUserFromModel(user);
+          showSnackBar(context, "Add to cart Success");
         },
       );
     } catch (e) {
@@ -66,7 +67,9 @@ class ProductDetailsServices {
       httpErrorHandle(
         response: res,
         context: context,
-        onSuccess: () {},
+        onSuccess: () {
+
+        },
       );
     } catch (e) {
       showSnackBar(context, e.toString());

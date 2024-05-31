@@ -30,6 +30,8 @@ class _AddressScreenState extends State<AddressScreen> {
   List<PaymentItem> paymentItems = [];
   final AddressServices addressServices = AddressServices();
 
+
+
   @override
   void initState() {
     super.initState();
@@ -182,9 +184,9 @@ class _AddressScreenState extends State<AddressScreen> {
               ),
               ApplePayButton(
                 width: double.infinity,
-                style: ApplePayButtonStyle.whiteOutline,
+                style: ApplePayButtonStyle.black,
                 type: ApplePayButtonType.buy,
-                paymentConfigurationAsset: 'applepay.json',
+                paymentConfiguration: PaymentConfiguration.fromJsonString(GlobalVariables.dfaultA),
                 onPaymentResult: onApplePayResult,
                 paymentItems: paymentItems,
                 margin: const EdgeInsets.only(top: 15),
@@ -192,13 +194,14 @@ class _AddressScreenState extends State<AddressScreen> {
                 onPressed: () => payPressed(address),
               ),
               const SizedBox(height: 10),
+
               GooglePayButton(
                 onPressed: () => payPressed(address),
-                paymentConfigurationAsset: 'gpay.json',
+                paymentConfiguration: PaymentConfiguration.fromJsonString(GlobalVariables.dfaultG),
                 onPaymentResult: onGooglePayResult,
                 paymentItems: paymentItems,
                 height: 50,
-                // theme: GooglePayButtonTheme.dark, err
+                // theme: GooglePayButtonTheme.dark
                 type: GooglePayButtonType.buy,
                 margin: const EdgeInsets.only(top: 15),
                 loadingIndicator: const Center(

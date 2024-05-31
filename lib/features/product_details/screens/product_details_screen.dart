@@ -1,5 +1,6 @@
 import 'package:shop/common/widgets/custom_button.dart';
 import 'package:shop/common/widgets/stars.dart';
+import 'package:shop/features/preview/screens/preview_screen.dart';
 import 'package:shop/features/product_details/services/product_details_services.dart';
 import 'package:shop/providers/user_provider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -54,6 +55,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       context: context,
       product: widget.product,
     );
+  }
+
+  void tryInYourHome() {
+    Navigator.pushNamed(context, PreviewScreen.routeName, arguments: widget.product);
   }
 
   @override
@@ -218,10 +223,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             Padding(
               padding: const EdgeInsets.all(10),
               child: CustomButton(
-                text: 'Buy Now',
+                text: 'Try In Your Home',
                 initialColor: GlobalVariables.secondaryColor,
                 pressedColor: GlobalVariables.pressedColor,
-                onTap: () {},
+                onTap: tryInYourHome,
               ),
             ),
             const SizedBox(height: 10),

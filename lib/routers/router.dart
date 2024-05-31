@@ -7,6 +7,7 @@ import 'package:shop/features/auth/screens/auth_screen.dart';
 import 'package:shop/features/home/screens/category_deals_screen.dart';
 import 'package:shop/features/home/screens/home_screen.dart';
 import 'package:shop/features/order_details/screens/order_details.dart';
+import 'package:shop/features/preview/screens/preview_screen.dart';
 import 'package:shop/features/product_details/screens/product_details_screen.dart';
 import 'package:shop/features/search/screens/search_screen.dart';
 import 'package:shop/models/order.dart';
@@ -62,6 +63,14 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => ProductDetailScreen(
+          product: product,
+        ),
+      );
+    case PreviewScreen.routeName:
+      var product = routeSettings.arguments as Product;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => PreviewScreen(
           product: product,
         ),
       );

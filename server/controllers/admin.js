@@ -1,5 +1,6 @@
 import Product from "../models/product.js";
 import Order from "../models/order.js";
+import User from "../models/user.js";
 
 export const addProduct = async (req, res, next) => {
   try {
@@ -24,6 +25,15 @@ export const getAllProducts = async (req, res, next) => {
   try {
     const products = await Product.find({});
     res.json(products);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+};
+
+export const getAllUsers = async (req, res, next) => {
+  try {
+    const users = await User.find({});
+    res.json(users);
   } catch (e) {
     res.status(500).json({ error: e.message });
   }

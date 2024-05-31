@@ -4,6 +4,7 @@ import 'package:shop/features/admin/screens/orders_screen.dart';
 import 'package:shop/features/admin/screens/posts_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shop/features/account/services/account_services.dart';
+import 'package:shop/features/admin/screens/users_screen.dart';
 
 class AdminScreen extends StatefulWidget {
   static const String routeName = '/admin-home';
@@ -16,10 +17,11 @@ class AdminScreen extends StatefulWidget {
 class _AdminScreenState extends State<AdminScreen> {
   int _page = 0;
   double bottomBarWidth = 42;
-  double bottomBarBorderWidth = 5;
+  double bottomBarBorderWidth = 4;
 
   List<Widget> pages = [
     const PostsScreen(),
+    const UsersScreen(),
     const AnalyticsScreen(),
     const OrdersScreen(),
   ];
@@ -97,7 +99,6 @@ class _AdminScreenState extends State<AdminScreen> {
             ),
             label: '',
           ),
-          // ANALYTICS
           BottomNavigationBarItem(
             icon: Container(
               width: bottomBarWidth,
@@ -105,6 +106,26 @@ class _AdminScreenState extends State<AdminScreen> {
                 border: Border(
                   top: BorderSide(
                     color: _page == 1
+                        ? GlobalVariables.selectedNavBarColor
+                        : GlobalVariables.backgroundColor,
+                    width: bottomBarBorderWidth,
+                  ),
+                ),
+              ),
+              child: const Icon(
+                Icons.person,
+              ),
+            ),
+            label: '',
+          ),
+          // ANALYTICS
+          BottomNavigationBarItem(
+            icon: Container(
+              width: bottomBarWidth,
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                    color: _page == 2
                         ? GlobalVariables.selectedNavBarColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,
@@ -124,7 +145,7 @@ class _AdminScreenState extends State<AdminScreen> {
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                    color: _page == 2
+                    color: _page == 3
                         ? GlobalVariables.selectedNavBarColor
                         : GlobalVariables.backgroundColor,
                     width: bottomBarBorderWidth,

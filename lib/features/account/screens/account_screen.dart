@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:shop/constants/global_variables.dart';
 import 'package:shop/features/account/widgets/below_app_bar.dart';
 import 'package:shop/features/account/widgets/orders.dart';
 import 'package:shop/features/account/widgets/top_buttons.dart';
-import 'package:flutter/material.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({Key? key}) : super(key: key);
@@ -32,8 +32,8 @@ class AccountScreen extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.only(left: 15, right: 15),
-                child: Row(
-                  children: const [
+                child: const Row(
+                  children: [
                     Padding(
                       padding: EdgeInsets.only(right: 15),
                       child: Icon(Icons.notifications_outlined),
@@ -48,8 +48,8 @@ class AccountScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: const [
+      body:const Column(
+        children: [
           BelowAppBar(),
           SizedBox(height: 10),
           TopButtons(),
