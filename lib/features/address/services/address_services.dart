@@ -69,7 +69,7 @@ class AddressServices {
         response: res,
         context: context,
         onSuccess: () {
-          showSnackBar(context, 'Your order has been placed! Please check mail to confirm order');
+          showSnackBar(context, 'Your order has been placed!');
           User user = userProvider.user.copyWith(
             cart: [],
           );
@@ -77,6 +77,7 @@ class AddressServices {
         },
       );
     } catch (e) {
+      print(e);
       showSnackBar(context, e.toString());
     }
   }

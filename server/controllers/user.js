@@ -1,6 +1,7 @@
 import User from "../models/user.js";
 import Product from "../models/product.js";
 import Order from "../models/order.js";
+import nodemailer from "nodemailer";
 
 export const addtoCart = async (req, res, next) => {
   try {
@@ -99,23 +100,32 @@ export const orderProducts = async (req, res, next) => {
       orderedAt: new Date().getTime(),
     });
     order = await order.save();
+    // console.log(order);
+    // const confirmationLink = `http://localhost:5003/api/user/confirm-order?orderId=${order._id}`;
 
-    const confirmationLink = `https://shop-s67f.onrender.com/api/user/confirm-order?orderId=${order._id}`;
+    // const mailOptions = {
+    //   from: "datnq2762@gmail.com",
+    //   to: toEmail,
+    //   subject: "Confirm Order",
+    //   html: `Click <a href="${confirmationLink}"> to confirm</a>.`,
+    // };
 
-    const mailOptions = {
-      from: "ngquocdat.work@gmail.com",
-      to: toEmail,
-      subject: "Confirm Order",
-      html: `Click <a href="${confirmationLink}"> to confirm</a>.`,
-    };
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        return res.status(500).send(error.toString());
-      }
-      return res
-        .status(200)
-        .send({ message: "Email sent: " + info.response, order: order });
-    });
+    // const transporter = nodemailer.createTransport({
+    //   service: 'gmail',
+    //   auth: {
+    //     user: '********',
+    //     pass: '********',
+    //   }
+    // });
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //   if (error) {
+    //     return res.status(500).send(error.toString());
+    //   }
+    //   return res
+    //     .status(200)
+    //     .send("Email sent: " + info.response);
+    // });
+    res.status(200).json({order: order});
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
