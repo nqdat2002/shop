@@ -9,6 +9,7 @@ import 'package:shop/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import 'package:shop/common/widgets/bottom_bar.dart';
 
 class AddressServices {
   void saveUserAddress({
@@ -74,6 +75,11 @@ class AddressServices {
             cart: [],
           );
           userProvider.setUserFromModel(user);
+          // Navigator.pushNamedAndRemoveUntil(
+          //   context,
+          //   BottomBar.routeName,
+          //       (Route<dynamic> route) => false,
+          // );
         },
       );
     } catch (e) {

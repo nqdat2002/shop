@@ -117,7 +117,6 @@ class _AddressScreenState extends State<AddressScreen> {
       totalSum: double.parse(widget.totalAmount),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     var address = context.watch<UserProvider>().user.address;

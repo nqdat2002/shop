@@ -15,6 +15,7 @@ class CarouselImage extends StatelessWidget {
               i,
               fit: BoxFit.cover,
               height: 200,
+                width: MediaQuery.of(context).size.width
             ),
           );
         },
