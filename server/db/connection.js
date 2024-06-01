@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 let uri = process.env.CONNECTION_URL;
-const connect = mongoose.connect('mongodb+srv://datfeed2706:En2pCBakSzeE8Ume@mycluster.htyubnp.mongodb.net/?retryWrites=true&w=majority&appName=myCluster').then(
+const connect = mongoose.connect(uri).then(
     (res) => {
         console.log("Database connected");
     }
